@@ -6,7 +6,7 @@
         <div>
             <ol>
                 <li v-for="(post, index) in posts" :key="index">
-                    {{  post }}
+                    {{  post.title }} <router-link :to='getRoute(post.id)'>View Post</router-link> 
                 </li>
             </ol>
         </div>
@@ -19,6 +19,11 @@ export default {
     data(){
         return {
             posts: []
+        }
+    },
+    methods: {
+        getRoute(id) {
+            return `/posts/${id}`
         }
     },
     created() {
